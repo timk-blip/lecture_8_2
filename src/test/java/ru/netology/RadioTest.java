@@ -126,25 +126,7 @@ class RadioTest {
         assertEquals(0, radio.getVolume());
     }
 
-    @Test
-    void shouldScrollingUpStationCountBranchElse() {
-        Radio radio = new Radio();
-        assertEquals(true, radio.isOn());
 
-
-        radio.setCurrentStation(15);
-        radio.scrollingUpStation();
-        assertEquals(1, radio.getCurrentStation());;
-    }
-    @Test
-    void shouldScrollingDownStationCountBranchElse() {
-        Radio radio = new Radio();
-        assertEquals(true, radio.isOn());
-
-        radio.setCurrentStation(-15);
-        radio.scrollingDownStation();
-        assertEquals(8, radio.getCurrentStation());
-    }
     @Test
     void shouldScrollingUpVolumeCountBranchElse() {
         Radio radio = new Radio();
@@ -163,6 +145,25 @@ class RadioTest {
         radio.setVolume(-15);
         radio.scrollingDownVolume();
         assertEquals(0, radio.getVolume());
+    }
+    @Test
+    void shouldScrollingUpStationCountBranchElse() {
+        Radio radio = new Radio();
+        assertEquals(true, radio.isOn());
+
+
+        radio.setCurrentStation(9);
+        radio.scrollingUpStation();
+        assertEquals(9, radio.getCurrentStation());;
+    }
+    @Test
+    void shouldScrollingDownStationCountBranchElse() {
+        Radio radio = new Radio();
+        assertEquals(true, radio.isOn());
+
+        radio.setCurrentStation(0);
+        radio.scrollingDownStation();
+        assertEquals(0, radio.getCurrentStation());
     }
 
 
