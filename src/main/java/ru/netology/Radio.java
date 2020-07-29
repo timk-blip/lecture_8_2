@@ -1,38 +1,10 @@
 package ru.netology;
 
 public class Radio {
-
+    private int numberOfRadioStations = 10;
     private int currentStation = 5;
-    private int volume = 5;
+    private int volume = 20;
     private boolean on = true;
-
-    public int getCurrentStation() {
-        return currentStation;
-    }
-
-    public void setCurrentStation(int currentStation) {
-        if (currentStation > 9) {
-            currentStation = 0;
-        }
-        if (currentStation < 0) {
-            currentStation = 9;
-        }
-        this.currentStation = currentStation;
-    }
-
-    public int getVolume() {
-        return volume;
-    }
-
-    public void setVolume(int volume) {
-        if (volume >= 10) {
-            volume = 10;
-        }
-        if (volume <= 0) {
-            volume = 0;
-        }
-        this.volume = volume;
-    }
 
     public boolean isOn() {
         return on;
@@ -42,8 +14,23 @@ public class Radio {
         this.on = on;
     }
 
+    public int getCurrentStation() {
+        return currentStation;
+    }
+
+    public void setCurrentStation(int currentStation) {
+
+        if (currentStation > getNumberOfRadioStations()) {
+            currentStation = 0;
+        }
+        if (currentStation < 0) {
+            currentStation = getNumberOfRadioStations();
+        }
+        this.currentStation = currentStation;
+    }
+
     public void scrollingUpStation() {
-        if (currentStation < 9) {
+        if (currentStation < getNumberOfRadioStations()) {
             currentStation++;
         } else {
         }
@@ -57,9 +44,31 @@ public class Radio {
         }
         return;
     }
+    public int getNumberOfRadioStations() {
+        return numberOfRadioStations;
+    }
+
+    public void setNumberOfRadioStations(int numberOfRadioStations) {
+        this.numberOfRadioStations = numberOfRadioStations;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public void setVolume(int volume) {
+        if (volume >= 100) {
+            volume = 100;
+        }
+        if (volume <= 0) {
+            volume = 0;
+        }
+        this.volume = volume;
+    }
+
 
     public void scrollingUpVolume() {
-        if (volume < 10) {
+        if (volume < 100) {
             volume++;
         } else {
         }
@@ -73,6 +82,7 @@ public class Radio {
         }
         return;
     }
+
 }
 
 
