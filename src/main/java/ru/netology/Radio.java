@@ -37,6 +37,7 @@ public class Radio {
         return;
     }
 
+
     public void scrollingDownStation() {
         if (currentStation > 0) {
             currentStation--;
@@ -65,8 +66,6 @@ public class Radio {
         }
         this.volume = volume;
     }
-
-
     public void scrollingUpVolume() {
         if (volume < 100) {
             volume++;
