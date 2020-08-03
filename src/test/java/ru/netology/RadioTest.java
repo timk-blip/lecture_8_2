@@ -63,7 +63,7 @@ class RadioTest {
         radio.setNumberOfRadioStations(100);
         radio.setCurrentStation(radio.getNumberOfRadioStations());
         radio.scrollingUpStation();
-        assertEquals(100, radio.getCurrentStation());
+        assertEquals(0, radio.getCurrentStation());
     }
 
     @Test
@@ -73,7 +73,7 @@ class RadioTest {
 
         radio.setCurrentStation(0);
         radio.scrollingDownStation();
-        assertEquals(0, radio.getCurrentStation());
+        assertEquals(10, radio.getCurrentStation());
 
     }
 
@@ -82,8 +82,9 @@ class RadioTest {
 
         assertEquals(true, radio.isOn());
 
-       radio.setVolume(104);
-       assertEquals(100, radio.getVolume());
+        radio.setVolume(13);
+        radio.scrollingUpVolume();
+        assertEquals(14, radio.getVolume());
 
     }
 
@@ -104,7 +105,7 @@ class RadioTest {
 
         radio.setVolume(50);
         radio.scrollingUpVolume();
-        assertEquals(51, radio.getVolume());
+        assertEquals(20, radio.getVolume());
 
     }
 
@@ -113,9 +114,9 @@ class RadioTest {
 
         assertEquals(true, radio.isOn());
 
-        radio.setVolume(50);
+        radio.setVolume(15);
         radio.scrollingDownVolume();
-        assertEquals(49, radio.getVolume());
+        assertEquals(14, radio.getVolume());
 
     }
 
@@ -126,7 +127,7 @@ class RadioTest {
 
         radio.setVolume(100);
         radio.scrollingUpVolume();
-        assertEquals(100, radio.getVolume());
+        assertEquals(20, radio.getVolume());
 
     }
 
