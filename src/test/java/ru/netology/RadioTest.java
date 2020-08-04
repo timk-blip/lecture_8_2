@@ -6,17 +6,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RadioTest {
     Radio radio = new Radio();
-
+    Radio radio_numberOfRadioStations = new Radio();
     @Test
     void shouldScrollingUpStation() {
 
         assertEquals(true, radio.isOn());
 
-        radio.setNumberOfRadioStations(75);
-        radio.setCurrentStation(45);
-        int scroll = radio.getCurrentStation();
-        radio.scrollingUpStation();
-        assertEquals(scroll + 1, radio.getCurrentStation());
+        radio_numberOfRadioStations.setNumberOfRadioStations(75);
+        radio_numberOfRadioStations.setCurrentStation(45);
+        int scroll = radio_numberOfRadioStations.getCurrentStation();
+        radio_numberOfRadioStations.scrollingUpStation();
+        assertEquals(scroll + 1, radio_numberOfRadioStations.getCurrentStation());
     }
 
     @Test
@@ -37,9 +37,9 @@ class RadioTest {
 
         assertEquals(true, radio.isOn());
 
-        radio.setNumberOfRadioStations(75);
-        radio.setCurrentStation(105);
-        assertEquals(0, radio.getCurrentStation());
+        radio_numberOfRadioStations.setNumberOfRadioStations(75);
+        radio_numberOfRadioStations.setCurrentStation(105);
+        assertEquals(0, radio_numberOfRadioStations.getCurrentStation());
 
     }
 
@@ -48,9 +48,9 @@ class RadioTest {
 
         assertEquals(true, radio.isOn());
 
-        radio.setNumberOfRadioStations(75);
-        radio.setCurrentStation(-1);
-        assertEquals(75, radio.getCurrentStation());
+        radio_numberOfRadioStations.setNumberOfRadioStations(75);
+        radio_numberOfRadioStations.setCurrentStation(-1);
+        assertEquals(75, radio_numberOfRadioStations.getCurrentStation());
 
     }
 
@@ -60,10 +60,10 @@ class RadioTest {
         assertEquals(true, radio.isOn());
 
 
-        radio.setNumberOfRadioStations(100);
-        radio.setCurrentStation(radio.getNumberOfRadioStations());
-        radio.scrollingUpStation();
-        assertEquals(0, radio.getCurrentStation());
+        radio_numberOfRadioStations.setNumberOfRadioStations(100);
+        radio_numberOfRadioStations.setCurrentStation(radio_numberOfRadioStations.getNumberOfRadioStations());
+        radio_numberOfRadioStations.scrollingUpStation();
+        assertEquals(0, radio_numberOfRadioStations.getCurrentStation());
     }
 
     @Test
