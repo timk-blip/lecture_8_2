@@ -6,17 +6,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RadioTest {
     Radio radio = new Radio();
-    Radio radio_numberOfRadioStations = new Radio(75);
     @Test
     void shouldScrollingUpStation() {
 
         assertEquals(true, radio.isOn());
-
-        radio_numberOfRadioStations.setNumberOfRadioStations(75);
-        radio_numberOfRadioStations.setCurrentStation(45);
-        int scroll = radio_numberOfRadioStations.getCurrentStation();
-        radio_numberOfRadioStations.scrollingUpStation();
-        assertEquals(scroll + 1, radio_numberOfRadioStations.getCurrentStation());
+        radio = new Radio(75);
+        radio.setCurrentStation(45);
+        int scroll = radio.getCurrentStation();
+        radio.scrollingUpStation();
+        assertEquals(scroll + 1, radio.getCurrentStation());
     }
 
     @Test
@@ -24,7 +22,7 @@ class RadioTest {
 
         assertEquals(true, radio.isOn());
 
-        radio.setNumberOfRadioStations(75);
+        radio = new Radio(75);
         radio.setCurrentStation(45);
         int scroll = radio.getCurrentStation();
         radio.scrollingDownStation();
@@ -36,10 +34,10 @@ class RadioTest {
     void shouldScrollingUpStationBranchElse() {
 
         assertEquals(true, radio.isOn());
+        radio = new Radio(75);
 
-        radio_numberOfRadioStations.setNumberOfRadioStations(75);
-        radio_numberOfRadioStations.setCurrentStation(105);
-        assertEquals(0, radio_numberOfRadioStations.getCurrentStation());
+        radio.setCurrentStation(105);
+        assertEquals(0, radio.getCurrentStation());
 
     }
 
@@ -48,9 +46,9 @@ class RadioTest {
 
         assertEquals(true, radio.isOn());
 
-        radio_numberOfRadioStations.setNumberOfRadioStations(75);
-        radio_numberOfRadioStations.setCurrentStation(-1);
-        assertEquals(75, radio_numberOfRadioStations.getCurrentStation());
+        radio = new Radio(75);
+        radio.setCurrentStation(-1);
+        assertEquals(75, radio.getCurrentStation());
 
     }
 
@@ -60,10 +58,10 @@ class RadioTest {
         assertEquals(true, radio.isOn());
 
 
-        radio_numberOfRadioStations.setNumberOfRadioStations(100);
-        radio_numberOfRadioStations.setCurrentStation(radio_numberOfRadioStations.getNumberOfRadioStations());
-        radio_numberOfRadioStations.scrollingUpStation();
-        assertEquals(0, radio_numberOfRadioStations.getCurrentStation());
+        radio = new Radio(75);
+        radio.setCurrentStation(radio.getNumberOfRadioStations());
+        radio.scrollingUpStation();
+        assertEquals(0, radio.getCurrentStation());
     }
 
     @Test
