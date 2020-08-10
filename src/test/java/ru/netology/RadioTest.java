@@ -6,26 +6,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RadioTest {
     Radio radio = new Radio();
-    Radio radio_numberOfRadioStations = new Radio();
+
     @Test
     void shouldScrollingUpStation() {
-
+        radio = new Radio(75, 45, 0, 20, 20, 0, true);
         assertEquals(true, radio.isOn());
-
-        radio_numberOfRadioStations.setNumberOfRadioStations(75);
-        radio_numberOfRadioStations.setCurrentStation(45);
-        int scroll = radio_numberOfRadioStations.getCurrentStation();
-        radio_numberOfRadioStations.scrollingUpStation();
-        assertEquals(scroll + 1, radio_numberOfRadioStations.getCurrentStation());
+        int scroll = radio.getCurrentStation();
+        radio.scrollingUpStation();
+        assertEquals(scroll + 1, radio.getCurrentStation());
     }
 
     @Test
     void shouldScrollingDownStation() {
-
+        radio = new Radio(75, 45, 0, 20, 20, 0, true);
         assertEquals(true, radio.isOn());
 
-        radio.setNumberOfRadioStations(75);
-        radio.setCurrentStation(45);
         int scroll = radio.getCurrentStation();
         radio.scrollingDownStation();
         assertEquals(scroll - 1, radio.getCurrentStation());
@@ -34,36 +29,33 @@ class RadioTest {
 
     @Test
     void shouldScrollingUpStationBranchElse() {
-
+        radio = new Radio(75, 45, 0, 20, 20, 0, true);
         assertEquals(true, radio.isOn());
 
-        radio_numberOfRadioStations.setNumberOfRadioStations(75);
-        radio_numberOfRadioStations.setCurrentStation(105);
-        assertEquals(0, radio_numberOfRadioStations.getCurrentStation());
+        radio.setCurrentStation(76);
+        assertEquals(0, radio.getCurrentStation());
 
     }
 
     @Test
     void shouldScrollingDownStationBranchElse() {
-
+        radio = new Radio(75, 45, 0, 20, 20, 0, true);
         assertEquals(true, radio.isOn());
 
-        radio_numberOfRadioStations.setNumberOfRadioStations(75);
-        radio_numberOfRadioStations.setCurrentStation(-1);
-        assertEquals(75, radio_numberOfRadioStations.getCurrentStation());
+        radio.setCurrentStation(-1);
+        assertEquals(75, radio.getCurrentStation());
 
     }
 
     @Test
     void shouldScrollingUpStationCountBranchElse() {
-
+        radio = new Radio(76, 45, 0, 20, 20, 0, true);
         assertEquals(true, radio.isOn());
 
 
-        radio_numberOfRadioStations.setNumberOfRadioStations(100);
-        radio_numberOfRadioStations.setCurrentStation(radio_numberOfRadioStations.getNumberOfRadioStations());
-        radio_numberOfRadioStations.scrollingUpStation();
-        assertEquals(0, radio_numberOfRadioStations.getCurrentStation());
+        radio.setCurrentStation(radio.getNumberOfRadioStations());
+        radio.scrollingUpStation();
+        assertEquals(0, radio.getCurrentStation());
     }
 
     @Test
