@@ -1,65 +1,64 @@
 package ru.netology;
 
-public class Radio {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Radio {
+    private int numberOfRadioStations = 10;
     private int currentStation = 5;
-    private int volume = 5;
+    private int minStation = 0;
+    private int maxVolume = 20;
+    private int volume = 20;
+    private int minVolume = 0;
     private boolean on = true;
 
-    public int getCurrentStation() {
-        return currentStation;
-    }
 
     public void setCurrentStation(int currentStation) {
-        if (currentStation > 9) {
-            currentStation = 0;
+        if (currentStation > numberOfRadioStations) {
+            this.currentStation = minStation;
+            return;
         }
-        if (currentStation < 0) {
-            currentStation = 9;
+        if (currentStation < minStation) {
+            this.currentStation = numberOfRadioStations;
+            return;
         }
         this.currentStation = currentStation;
     }
 
-    public int getVolume() {
-        return volume;
+    public void scrollingUpStation() {
+        if (currentStation >= numberOfRadioStations) {
+            currentStation = minStation;
+            return;
+        }
+        currentStation++;
+    }
+
+    public void scrollingDownStation() {
+        if (currentStation <= minStation) {
+            currentStation = numberOfRadioStations;
+            return;
+        }
+        currentStation--;
     }
 
     public void setVolume(int volume) {
-        if (volume >= 10) {
-            volume = 10;
+        if (volume >= maxVolume) {
+            this.volume = maxVolume;
+            return;
         }
-        if (volume <= 0) {
-            volume = 0;
+        if (volume <= minVolume) {
+            this.volume = minVolume;
+            return;
         }
         this.volume = volume;
     }
 
-    public boolean isOn() {
-        return on;
-    }
-
-    public void setOn(boolean on) {
-        this.on = on;
-    }
-
-    public void scrollingUpStation() {
-        if (currentStation < 9) {
-            currentStation++;
-        } else {
-        }
-        return;
-    }
-
-    public void scrollingDownStation() {
-        if (currentStation > 0) {
-            currentStation--;
-        } else {
-        }
-        return;
-    }
-
     public void scrollingUpVolume() {
-        if (volume < 10) {
+        if (volume < maxVolume) {
             volume++;
         } else {
         }
@@ -67,12 +66,11 @@ public class Radio {
     }
 
     public void scrollingDownVolume() {
-        if (volume > 0) {
+        if (volume > minVolume) {
             volume--;
         } else {
         }
         return;
     }
+
 }
-
-
